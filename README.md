@@ -2,7 +2,7 @@
 
 > *Important:* This repository documents a controlled lab exercise run in an isolated VirtualBox environment *for educational, offensive, and forensic analysis only*. It does *not* include, *nor* will it provide, exploit code, working malware samples, operational playbooks, or step-by-step instructions that would enable replication or distribution of malicious tools. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
 
----
+<img width="100%" height="200" alt="Image" src="https://github.com/user-attachments/assets/945d43ef-2d17-4d59-8718-4fd7bd7dd187" />
 
 ## Table of contents
 - [Purpose](#purpose)
@@ -145,7 +145,7 @@ When responding to a suspected ransomware incident:
 
 ## References & Further Reading
 (These are safe, non-actionable links to vendor advisories, incident response guidance, and defensive resources. Replace with the latest authoritative sources.)
-- Microsoft security advisories and patch guidance
+- [Microsoft security advisories and patch guidance](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)
 - CERT / national CSIRT ransomware advisories
 - SANS / MITRE on ransomware detection and response
 - Vendor whitepapers on detection and EDR tuning
