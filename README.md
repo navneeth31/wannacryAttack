@@ -53,7 +53,6 @@ You should keep your lab completely offline or on a segmented internal network w
 - View, Download, Exploit the device
 
 > This summary purposefully avoids operational details and exact reproduction steps.
-
 ---
 
 ## Evidence & Artifacts collected (types)
@@ -119,8 +118,6 @@ Defensive steps to reduce risk and remediate infected hosts (high-level):
 - *Network segmentation:* Limit lateral movement by segmenting networks and applying least-privilege access.
 - *Endpoint protection:* Deploy and tune EDR/AV to detect mass file-modification behaviors and suspicious persistence techniques.
 - *User training:* Educate users about phishing, suspicious attachments, and reporting processes.
-- *Inventory & hardening:* Keep an accurate asset inventory and harden exposed services.
-
 ---
 
 ## Forensic & Incident Response Steps (recommended, high-level)
@@ -131,8 +128,6 @@ When responding to a suspected ransomware incident:
 4. *Triage*: determine scope and identify affected hosts.
 5. *Remediate*: restore from known good backups after ensuring root cause is fixed and systems are clean.
 6. *Post-incident:* perform root cause analysis, lessons learned, and update playbooks.
-
-> Follow your organization’s formal incident response process and legal requirements. Contact legal and law enforcement as appropriate.
 
 ---
 
