@@ -11,12 +11,10 @@
 - [High-level Incident Summary](#high-level-incident-summary)
 - [Evidence & Artifacts collected (types)](#evidence--artifacts-collected-types)
 - [Forensic Analysis (observations — non-actionable)](#forensic-analysis-observations---non-actionable)
-- [Indicators of Compromise (IoC) — guidance](#indicators-of-compromise-ioc---guidance)
 - [Detection & Hunting (what defenders should look for)](#detection--hunting-what-defenders-should-look-for)
 - [Mitigation & Remediation](#mitigation--remediation)
 - [Forensic & Incident Response Steps (recommended, high-level)](#forensic--incident-response-steps-recommended-high-level)
 - [Lessons Learned](#lessons-learned)
-- [Responsible Disclosure & Sharing](#responsible-disclosure--sharing)
 - [References & Further Reading](#references--further-reading)
 
 ---
@@ -52,6 +50,7 @@ You should keep your lab completely offline or on a segmented internal network w
 - *Type:* Ransomware infection observed in an isolated VirtualBox lab.
 - *Observed impact:* File encryption (affected files noted by unique extensions and ransom note files appearing), system/service disruption on infected VM(s), and attempted local & network propagation behavior.
 - *Scope:* Confined to isolated lab network and virtual machine snapshots only.
+- View, Download, Exploit the device
 
 > This summary purposefully avoids operational details and exact reproduction steps.
 
@@ -82,12 +81,11 @@ The following artifact types were collected during the lab for offensivse analys
 ---
 
 ## Forensic Analysis (observations — non-actionable)
-Below are high-level behavioral observations useful to defenders and analysts:
+Below are high-level behavioral observations useful to attackers and analysts:
 
 - *File activity:* Rapid modification/overwrite of user files; appearance of ransom note files in affected directories.
 - *Process behavior:* Creation of processes that perform file I/O at scale, often with elevated privileges.
-- *Persistence & startup:* Attempts to establish persistence via system startup/registry changes (general concept — not specific keys).
-- *Network behavior:* Outbound network connections to hosts during or after the compromise; SMB-related scanning or connection attempts in cases of worm-like propagation.
+- *Network behavior:* Outbound network connections to hosts during or after the compromise.
 - *Encryption patterns:* Files replaced/renamed and encrypted in place; original files often no longer readable by standard apps.
 - *Ransom note presence:* Text files dropped in directories explaining payment and recovery steps.
 
@@ -95,18 +93,11 @@ Below are high-level behavioral observations useful to defenders and analysts:
 
 ---
 
-## Indicators of Compromise (IoC) — guidance
-- Share IoCs responsibly and only after ensuring they do not facilitate re-use of the malware.
-- Preferred IoC formats: sanitized hashes (if safe), network connection patterns, filenames (redacted), and behavioral signatures used in EDR/SIEM rules.
-- Before publishing IoCs, redact or sanitize anything that could serve as a working sample or command.
-
----
-
 ## Detection & Hunting (defensive guidance)
-Use the following high-level signals to create detections — these are defensive patterns, not exploit instructions:
+Use the following high-level signals to create detections, not exploit instructions:
 
 - Unusual high-volume file WRITE activity, especially across user document locations.
-- Creation of ransom note files (monitor for specific patterns / filenames and content signatures).
+- Creation of ransom note files.
 - Abrupt increase in failed file open/read errors for many files.
 - New or abnormal service/process creation that performs mass file I/O.
 - Unusual SMB traffic patterns (scanning, unexpected connections between endpoints).
@@ -147,34 +138,14 @@ When responding to a suspected ransomware incident:
 
 ## Lessons Learned
 - Patch promptly and prioritize high-severity vendor bulletins.
-- Ransomware can be mitigated strongly by good backups, segmentation, and endpoint defenses.
 - Preparedness (playbooks, logs retention, and practiced restoration) shortens recovery time and reduces impact.
 - Controlled labs are valuable for studying behavior — but must remain isolated and governed by clear rules.
 
 ---
 
-## Responsible Disclosure & Sharing
-- If you have artifacts that may help others, consider sharing sanitized summaries or YARA/Sigma rules (ensuring they do not contain malware or enable reproduction).
-- Coordinate sharing with trusted information-sharing organizations (ISACs, vendor CERTs) where appropriate.
-- Never upload raw malware binaries or live VM images into public repositories.
-
----
-
 ## References & Further Reading
 (These are safe, non-actionable links to vendor advisories, incident response guidance, and defensive resources. Replace with the latest authoritative sources.)
-- Microsoft security advisories and patch guidance (search MS17-010 and vendor guidance)
+- Microsoft security advisories and patch guidance
 - CERT / national CSIRT ransomware advisories
 - SANS / MITRE on ransomware detection and response
 - Vendor whitepapers on detection and EDR tuning
-
----
-
-## Contact / Attribution
-- Author: Your Name  
-- Lab date: YYYY-MM-DD (replace with the date of your exercise)
-- Notes: All artifacts are stored securely and sanitized before any sharing.
-
----
-
-### If you want:
-- I can generate: a) a printable incident summary report based on this README, b) an executive one-page slide, or c) detection examples in Sigma format (sanitized, non-actionable). Tell me which and I’ll produce a safe version.
