@@ -1,6 +1,6 @@
-# WannaCry Ransomware — VirtualBox Lab (Forensic / Defensive Report)
+# WannaCry Ransomware — Forensic / Offensive Report (VirtualBox Lab)
 
-> *Important:* This repository documents a controlled lab exercise run in an isolated VirtualBox environment *for educational, defensive, and forensic analysis only. It does **not* include, nor will it provide, exploit code, working malware samples, operational playbooks, or step-by-step instructions that would enable replication or distribution of malicious tools. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
+> *Important:* This repository documents a controlled lab exercise run in an isolated VirtualBox environment *for educational, offensive, and forensic analysis only*. It does *not* include, *nor* will it provide, exploit code, working malware samples, operational playbooks, or step-by-step instructions that would enable replication or distribution of malicious tools. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
 
 ---
 
@@ -22,29 +22,27 @@
 ---
 
 ## Purpose
-This repository documents a controlled, isolated lab exercise performed inside VirtualBox to study and analyze the behavior of ransomware in a safe environment. The goals are:
+This repository documents a controlled, isolated lab exercise performed inside *VirtualBox* to study and analyze the behavior of ransomware in a safe environment. The goals are:
 - Understand high-level ransomware behavior and propagation patterns.
 - Collect and preserve forensic artifacts for analysis and training.
-- Develop and test detection, mitigation, and remediation guidance for defenders.
 
 ---
 
 ## Disclaimer & Legal / Ethical Notice
 - This work is for defensive research and education only.
 - Running malware outside of an isolated, authorized lab is illegal and unethical.
-- If you are documenting real incidents affecting production systems, follow your organization’s incident response and legal processes and do not publish sensitive artifacts.
-- Do not rely on this document to reproduce, deploy, or weaponize malware.
+- If you are documenting real incidents affecting production systems, follow your organization’s incident response and do not publish sensitive artifacts.
+- Do not rely on this document to *reproduce, deploy, or weaponize malware*.
 
 ---
 
 ## Lab Environment (high-level)
-> Note: Do not include network-accessible malware, sample binaries, or raw exploit details in the repo.
 
 Typical controlled lab baseline used (examples only — *not* instructions):
 - Virtualization: VirtualBox (isolated host-only / internal network)
 - Guest OS: Windows (patched status detailed below)
 - Additional hosts: Linux jump host as monitoring/analysis point
-- Tools used for observation: packet capture (PCAP), host process listing, memory acquisition tools, and offline forensic imaging
+- Tools used for observation: nmap, Metasploit module,Meterpreter, Metasploit Framework.
 
 You should keep your lab completely offline or on a segmented internal network with no internet access when running analyses.
 
@@ -60,17 +58,26 @@ You should keep your lab completely offline or on a segmented internal network w
 ---
 
 ## Evidence & Artifacts collected (types)
-The following artifact types were collected during the lab for defensive analysis and reporting. Do *not* include raw malware binaries in this repository.
+The following artifact types were collected during the lab for offensivse analysis and reporting.
 
-- VM snapshots (preserve in secure storage; do not publish)
-- Disk images and forensic images (retained offline)
-- Memory dumps (volatile memory captures)
-- Packet captures (PCAPs) from virtual network interfaces
-- Host logs: Windows Event Logs, Sysmon logs, application logs
+- VM snapshots (Starting the process)
+  <img width="1060" height="598" alt="Image" src="https://github.com/user-attachments/assets/3b6bff63-5380-49de-8189-2132fc09e6bf" />
+- The *Metasploit* Interface
+  <img width="1060" height="598" alt="Image" src="https://github.com/user-attachments/assets/a2915ab7-5da6-4f91-9430-e494403a9cc6" />
+- Searching for target device on the NMap findings
+  <img width="1060" height="598" alt="Image" src="https://github.com/user-attachments/assets/3d40f778-afe5-42eb-be8a-43672c676ed9" />
+- We will have a option for a *target* type
+  <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/872ddd89-dbf1-4710-a27a-23beacd3fece" />
+- Run the attack anonymously on the *target* device
+  <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/a5603ce4-2047-4df6-a0d7-7e138f7436a9" />
 - Ransom note screenshots (redacted if containing identifiable info)
-- Timeline exports (system timeline of relevant events)
-- Process and service lists taken during and immediately after the incident
-- Filenames and file extension examples (redacted/sanitized)
+  <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/fd2ff14f-32a6-40d3-85ba-61fd7a383003" />
+- We can Download the info and attack system
+  <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/fd2ff14f-32a6-40d3-85ba-61fd7a383003" />
+- The pages when system attacked(tried to view any info this pages appear)
+  ![Image](https://github.com/user-attachments/assets/c0a232eb-02f0-4498-abef-f58d866397ce)
+  --
+  ![Image](https://github.com/user-attachments/assets/c0a232eb-02f0-4498-abef-f58d866397ce)
 
 ---
 
