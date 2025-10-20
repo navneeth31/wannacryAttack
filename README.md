@@ -146,6 +146,5 @@ When responding to a suspected ransomware incident:
 ## References & Further Reading
 (These are safe, non-actionable links to vendor advisories, incident response guidance, and defensive resources. Replace with the latest authoritative sources.)
 - [Microsoft security advisories and patch guidance](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)
-- CERT / national CSIRT ransomware advisories
-- SANS / MITRE on ransomware detection and response
-- Vendor whitepapers on detection and EDR tuning
+- [SANS / MITRE on ransomware detection and response](https://isc.sans.edu/)
+- [Malware Traffic Analysis](https://www.malware-traffic-analysis.net/)
