@@ -77,7 +77,7 @@ The following artifact types were collected during the lab for offensivse analys
 - The pages when system attacked(tried to view any info this pages appear)
   ![Image](https://github.com/user-attachments/assets/c0a232eb-02f0-4498-abef-f58d866397ce)
   --
-  ![Image](https://github.com/user-attachments/assets/c0a232eb-02f0-4498-abef-f58d866397ce)
+  ![Image](https://github.com/user-attachments/assets/b55204b1-84d3-451f-8457-0addca079e8e)
 
 ---
 
