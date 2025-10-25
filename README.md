@@ -8,7 +8,7 @@
 - [Purpose](#purpose)
 - [Disclaimer & Legal / Ethical Notice](#disclaimer--legal--ethical-notice)
 - [Lab Environment](#lab-environment)
-- [High-level Incident Summary](#high-level-incident-summary)
+- [Incident Summary](#incident-summary)
 - [Evidence & Artifacts collected](#evidence--artifacts-collected)
 - [Forensic Analysis](#forensic-analysis)
 - [Detection & Hunting](#detection--hunting)
