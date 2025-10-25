@@ -1,6 +1,6 @@
 # WannaCry Ransomware — Offensive Report (VirtualBox Lab)
 
-> *Important:* This repository documents a controlled lab exercise run in an **Isolated VirtualBox Environment** *for educational, offensive, and forensic analysis only*. It does *not* include, *nor* will it provide, exploit code, working malware samples, operational playbooks, or step-by-step instructions that would enable replication or distribution of malicious tools. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
+> *Important:* This repository documents a controlled lab exercise run in an **Isolated VirtualBox Environment** *for educational purpose only*. It does *not* include, *nor* will it provide, exploit code, working malware samples. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
 
 <img width="100%" height="200" alt="Image" src="https://github.com/user-attachments/assets/945d43ef-2d17-4d59-8718-4fd7bd7dd187" />
 
@@ -13,22 +13,20 @@
 - [Forensic Analysis](#forensic-analysis)
 - [Detection & Hunting](#detection--hunting)
 - [Mitigation & Remediation](#mitigation--remediation)
-- [Forensic & Incident Response Steps](#forensic--incident-response-steps)
 - [Lessons Learned](#lessons-learned)
 
 ---
 
 ## Purpose
-This repository documents a controlled, isolated lab exercise performed inside *VirtualBox* to study and analyze the behavior of ransomware in a safe environment. The goals are:
-- Understand high-level ransomware behavior and propagation patterns.
-- Collect and preserve forensic artifacts for analysis and training.
+This repository documents lab exercise performed inside *VirtualBox* to study and analyze the behavior of ransomware. The goals are:
+- Understand ransomware behavior.
+- Collect and preserve artifacts for analysis and training.
 
 ---
 
 ## Disclaimer & Legal / Ethical Notice
-- This work is for defensive research and education only.
+- This work is for offensive research and education purpose only.
 - Running malware outside of an isolated, authorized lab is illegal and unethical.
-- If you are documenting real incidents affecting production systems, follow your organization’s incident response and do not publish sensitive artifacts.
 - Do not rely on this document to *reproduce, deploy, or weaponize malware*.
 
 ---
@@ -44,7 +42,7 @@ Typical controlled lab baseline used:
 
 ## Incident Summary
 - *Type:* Ransomware infection observed in an isolated VirtualBox lab.
-- *Observed impact:* File encryption (affected files noted by unique extensions and ransom note files appearing), system/service disruption on infected VM(s), and attempted local & network propagation behavior.
+- *Observed impact:* File encryption (affected files noted by unique extensions and ransom note files appearing), system/service disruption on infected VM(s).
 - *Scope:* Confined to isolated lab network and virtual machine snapshots only.
 - View, Download, Exploit the device
 
@@ -64,7 +62,7 @@ The following artifact types were collected during the lab for offensivse analys
   <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/872ddd89-dbf1-4710-a27a-23beacd3fece" />
 - Run the attack anonymously on the *target* device
   <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/a5603ce4-2047-4df6-a0d7-7e138f7436a9" />
-- Ransom note screenshots (redacted if containing identifiable info)
+- Ransom note screenshots
   <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/fd2ff14f-32a6-40d3-85ba-61fd7a383003" />
 - We can Download the info and attack system
   <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/fd2ff14f-32a6-40d3-85ba-61fd7a383003" />
@@ -87,45 +85,31 @@ Below are high-level behavioral observations useful to attackers and analysts:
 ---
 
 ## Detection & Hunting
-Use the following high-level signals to create detections, not exploit instructions:
+Use the following signals to create detections, not exploit instructions:
 
 - Unusual high-volume file WRITE activity, especially across user document locations.
 - Creation of ransom note files.
 - Abrupt increase in failed file open/read errors for many files.
 - New or abnormal service/process creation that performs mass file I/O.
-- Unusual SMB traffic patterns (scanning, unexpected connections between endpoints).
 - Sudden spikes in CPU or disk I/O on endpoints outside maintenance windows.
 
 Suggested places to look:
 - Windows Event Logs (Application/System/Security)
 - Endpoint detection logs (EDR process and file events)
 - Network flow logs and PCAPs for lateral movement attempts
-- SIEM correlation for file-modification spikes and unusual process chains
 
 ---
 
 ## Mitigation & Remediation
-Defensive steps to reduce risk and remediate infected hosts (high-level):
-- *Patch management:* Ensure critical security updates are applied (e.g., patches addressing vulnerabilities used by wormable ransomware). Keep systems patched per vendor guidance.
-- *Disable legacy protocols:* Disable SMBv1 and other deprecated protocols if not required.
+Defensive steps to reduce risk and remediate infected hosts:
+- *Patch management:* Ensure critical security updates are applied (e.g., patches addressing vulnerabilities used by wormable ransomware).
 - *Backups:* Maintain immutable, offline or air-gapped backups and regularly test restoration procedures.
-- *Network segmentation:* Limit lateral movement by segmenting networks and applying least-privilege access.
 - *Endpoint protection:* Deploy and tune EDR/AV to detect mass file-modification behaviors and suspicious persistence techniques.
 - *User training:* Educate users about phishing, suspicious attachments, and reporting processes.
----
-
-## Forensic & Incident Response Steps
-When responding to a suspected ransomware incident:
-1. *Isolate* affected systems from networks (avoid shutting off systems prematurely if live forensic collection is needed).
-2. *Preserve evidence:* Make forensic snapshots of system disks and memory where possible.
-3. *Capture network traffic* and logs for relevant time window.
-4. *Triage*: determine scope and identify affected hosts.
-5. *Remediate*: restore from known good backups after ensuring root cause is fixed and systems are clean.
-6. *Post-incident:* perform root cause analysis, lessons learned, and update playbooks.
 
 ---
 
 ## Lessons Learned
 - Patch promptly and prioritize high-severity vendor bulletins.
 - Preparedness (playbooks, logs retention, and practiced restoration) shortens recovery time and reduces impact.
-- Controlled labs are valuable for studying behavior — but must remain isolated and governed by clear rules.
+- Controlled labs are valuable for studying behavior.
