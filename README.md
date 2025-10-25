@@ -35,12 +35,10 @@ This repository documents a controlled, isolated lab exercise performed inside *
 
 ## Lab Environment
 Typical controlled lab baseline used:
-- Virtualization: VirtualBox
+- Virtualization: Oracle VirtualBox(KaliLinux)
 - Guest OS: Windows 7
-- Additional hosts: Linux jump host as monitoring/analysis point
-- Tools used for observation: nmap, Metasploit module,Meterpreter, Metasploit Framework.
-
-You should keep your lab completely offline or on a segmented internal network with no internet access when running analyses.
+- Additional hosts: Linux jump host as monitoring/analysis point.
+- Tools used for observation: nmap, Metasploit Framework.
 
 ---
 
