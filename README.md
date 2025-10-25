@@ -7,15 +7,14 @@
 ## Table of contents
 - [Purpose](#purpose)
 - [Disclaimer & Legal / Ethical Notice](#disclaimer--legal--ethical-notice)
-- [Lab Environment (high-level)](#lab-environment-high-level)
+- [Lab Environment](#lab-environment)
 - [High-level Incident Summary](#high-level-incident-summary)
-- [Evidence & Artifacts collected (types)](#evidence--artifacts-collected-types)
-- [Forensic Analysis (observations — non-actionable)](#forensic-analysis-observations---non-actionable)
-- [Detection & Hunting (what defenders should look for)](#detection--hunting-what-defenders-should-look-for)
+- [Evidence & Artifacts collected](#evidence--artifacts-collected)
+- [Forensic Analysis](#forensic-analysis)
+- [Detection & Hunting](#detection--hunting)
 - [Mitigation & Remediation](#mitigation--remediation)
-- [Forensic & Incident Response Steps (recommended, high-level)](#forensic--incident-response-steps-recommended-high-level)
+- [Forensic & Incident Response Steps](#forensic--incident-response-steps)
 - [Lessons Learned](#lessons-learned)
-- [References & Further Reading](#references--further-reading)
 
 ---
 
@@ -37,7 +36,7 @@ This repository documents a controlled, isolated lab exercise performed inside *
 ## Lab Environment
 Typical controlled lab baseline used:
 - Virtualization: VirtualBox
-- Guest OS: Windows
+- Guest OS: Windows 7
 - Additional hosts: Linux jump host as monitoring/analysis point
 - Tools used for observation: nmap, Metasploit module,Meterpreter, Metasploit Framework.
 
@@ -45,7 +44,7 @@ You should keep your lab completely offline or on a segmented internal network w
 
 ---
 
-## High-level Incident Summary
+## Incident Summary
 - *Type:* Ransomware infection observed in an isolated VirtualBox lab.
 - *Observed impact:* File encryption (affected files noted by unique extensions and ransom note files appearing), system/service disruption on infected VM(s), and attempted local & network propagation behavior.
 - *Scope:* Confined to isolated lab network and virtual machine snapshots only.
@@ -54,7 +53,7 @@ You should keep your lab completely offline or on a segmented internal network w
 > This summary purposefully avoids operational details and exact reproduction steps.
 ---
 
-## Evidence & Artifacts collected (types)
+## Evidence & Artifacts collected
 The following artifact types were collected during the lab for offensivse analysis and reporting.
 
 - VM snapshots (Starting the process)
@@ -71,19 +70,17 @@ The following artifact types were collected during the lab for offensivse analys
   <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/fd2ff14f-32a6-40d3-85ba-61fd7a383003" />
 - We can Download the info and attack system
   <img width="1920" height="946" alt="Image" src="https://github.com/user-attachments/assets/fd2ff14f-32a6-40d3-85ba-61fd7a383003" />
-- The pages when system attacked(tried to view any info this pages appear)
+- The pages when system attacked
   ![Image](https://github.com/user-attachments/assets/c0a232eb-02f0-4498-abef-f58d866397ce)
-  --
   ![Image](https://github.com/user-attachments/assets/b55204b1-84d3-451f-8457-0addca079e8e)
 
 ---
 
-## Forensic Analysis (observations — non-actionable)
+## Forensic Analysis
 Below are high-level behavioral observations useful to attackers and analysts:
 
 - *File activity:* Rapid modification/overwrite of user files; appearance of ransom note files in affected directories.
-- *Process behavior:* Creation of processes that perform file I/O at scale, often with elevated privileges.
-- *Network behavior:* Outbound network connections to hosts during or after the compromise.
+- *Process behavior:* Creation of processes that perform file I/O at scale.
 - *Encryption patterns:* Files replaced/renamed and encrypted in place; original files often no longer readable by standard apps.
 - *Ransom note presence:* Text files dropped in directories explaining payment and recovery steps.
 
@@ -91,7 +88,7 @@ Below are high-level behavioral observations useful to attackers and analysts:
 
 ---
 
-## Detection & Hunting (defensive guidance)
+## Detection & Hunting
 Use the following high-level signals to create detections, not exploit instructions:
 
 - Unusual high-volume file WRITE activity, especially across user document locations.
@@ -134,11 +131,3 @@ When responding to a suspected ransomware incident:
 - Patch promptly and prioritize high-severity vendor bulletins.
 - Preparedness (playbooks, logs retention, and practiced restoration) shortens recovery time and reduces impact.
 - Controlled labs are valuable for studying behavior — but must remain isolated and governed by clear rules.
-
----
-
-## References & Further Reading
-(These are safe, non-actionable links to vendor advisories, incident response guidance, and defensive resources. Replace with the latest authoritative sources.)
-- [Microsoft security advisories and patch guidance](https://learn.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010)
-- [SANS / MITRE on ransomware detection and response](https://isc.sans.edu/)
-- [Malware Traffic Analysis](https://www.malware-traffic-analysis.net/)
