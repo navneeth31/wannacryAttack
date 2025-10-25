@@ -1,6 +1,6 @@
-# WannaCry Ransomware — Forensic / Offensive Report (VirtualBox Lab)
+# WannaCry Ransomware — Offensive Report (VirtualBox Lab)
 
-> *Important:* This repository documents a controlled lab exercise run in an isolated VirtualBox environment *for educational, offensive, and forensic analysis only*. It does *not* include, *nor* will it provide, exploit code, working malware samples, operational playbooks, or step-by-step instructions that would enable replication or distribution of malicious tools. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
+> *Important:* This repository documents a controlled lab exercise run in an **Isolated VirtualBox Environment** *for educational, offensive, and forensic analysis only*. It does *not* include, *nor* will it provide, exploit code, working malware samples, operational playbooks, or step-by-step instructions that would enable replication or distribution of malicious tools. Do not attempt to run, reproduce, or distribute malware outside of authorized, legally compliant lab environments.
 
 <img width="100%" height="200" alt="Image" src="https://github.com/user-attachments/assets/945d43ef-2d17-4d59-8718-4fd7bd7dd187" />
 
@@ -34,8 +34,7 @@ This repository documents a controlled, isolated lab exercise performed inside *
 
 ---
 
-## Lab Environment (high-level)
-
+## Lab Environment
 Typical controlled lab baseline used:
 - Virtualization: VirtualBox
 - Guest OS: Windows
@@ -120,7 +119,7 @@ Defensive steps to reduce risk and remediate infected hosts (high-level):
 - *User training:* Educate users about phishing, suspicious attachments, and reporting processes.
 ---
 
-## Forensic & Incident Response Steps (recommended, high-level)
+## Forensic & Incident Response Steps
 When responding to a suspected ransomware incident:
 1. *Isolate* affected systems from networks (avoid shutting off systems prematurely if live forensic collection is needed).
 2. *Preserve evidence:* Make forensic snapshots of system disks and memory where possible.
